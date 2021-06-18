@@ -1,7 +1,7 @@
 # Turn off all beeps
-# unsetopt BEEP
+unsetopt BEEP
 # Turn off autocomplete beeps
-unsetopt LIST_BEEP
+# unsetopt LIST_BEEP
 
 # oh my zsh config
 
