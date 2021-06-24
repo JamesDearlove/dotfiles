@@ -1,7 +1,7 @@
 # Turn off all beeps
-unsetopt BEEP
+# unsetopt BEEP
 # Turn off autocomplete beeps
-# unsetopt LIST_BEEP
+unsetopt LIST_BEEP
 
 # oh my zsh config
 
@@ -22,3 +22,8 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/home/james/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# poetry
+export PATH="$HOME/.poetry/bin:$PATH"
