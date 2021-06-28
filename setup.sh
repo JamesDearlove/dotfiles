@@ -4,7 +4,7 @@ set -e
 
 LSB_RELEASE=$(lsb_release -cs)
 
-# -- APT Sources --
+echo "=== Jimmy Dev Environment Setup ==="
 
 echo "== APT Sources =="
 
@@ -24,9 +24,7 @@ $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp.gpg
 
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com \
-$LSB_RELEASE main" > /etc/apt/sources.list.d/hashicorp.list
-
-# -- Dependencies --
+$LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 
 echo "== Dependencies =="
 
@@ -38,8 +36,6 @@ libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
 apt-transport-https ca-certificates gnupg lsb-release \ # docker & azure cli
 software-properties-common # terraform
-
-# -- Install --
 
 echo "== Installers =="
 
