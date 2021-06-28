@@ -30,6 +30,7 @@ $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 echo "== Dependencies =="
 
 sudo apt-get update
+sudo apt-get upgrade
 
 # python build, docker & azure cli, terraform
 
@@ -70,7 +71,6 @@ nvm install node
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 sudo chsh -s $(which zsh) $(whoami)
 
-# -- Config Files --
 echo "== Copying Configs =="
 cp ./.zshrc ~
 cp ./.zprofile ~
