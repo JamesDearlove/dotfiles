@@ -41,14 +41,8 @@ software-properties-common
 
 echo "== Installers =="
 
-# docker
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-
-# azure cli
-sudo apt-get install azure-cli
-
-# terraform cli
-sudo apt-get install terraform
+# docker, azure cli, terraform, zsh
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh
 
 # pyenv
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -60,9 +54,7 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 nvm install node
 
-# zsh
-sudo apt-get install -y zsh
-
+# oh my zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # -- Config Files --
