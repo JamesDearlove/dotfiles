@@ -18,12 +18,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# pyenv
-export PATH="/home/james/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export PATH="$HOME/.poetry/bin:$PATH"
-
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# pyenv autocomplete
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+# terraform tab completion
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+eval "$(pyenv init -)"
