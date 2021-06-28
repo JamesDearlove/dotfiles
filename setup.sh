@@ -30,12 +30,14 @@ echo "== Dependencies =="
 
 sudo apt-get update
 
+# python build, docker & azure cli, terraform
+
 sudo apt-get install -y \
-make build-essential libssl-dev zlib1g-dev \ # python build
+make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-apt-transport-https ca-certificates gnupg lsb-release \ # docker & azure cli
-software-properties-common # terraform
+apt-transport-https ca-certificates gnupg lsb-release \
+software-properties-common
 
 echo "== Installers =="
 
