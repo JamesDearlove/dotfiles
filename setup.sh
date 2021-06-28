@@ -58,4 +58,3 @@ sudo apt-get install -y zsh
 # Config Files
 cp ./.zshrc ~
 cp ./.zprofile ~
-cp -r ./.ssh
