@@ -43,8 +43,8 @@ software-properties-common
 
 echo "== Installers =="
 
-# docker, azure cli, terraform, zsh
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh
+# docker, azure cli, terraform, zsh, neofetch
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh neofetch
 
 # pyenv
 if [[ ! -d ~/.pyenv ]]
@@ -74,5 +74,7 @@ sudo chsh -s $(which zsh) $(whoami)
 echo "== Copying Configs =="
 cp ./.zshrc ~
 cp ./.zprofile ~
+cp -r ./.config ~
+# todo: would be nice to configure neofetch ascii art depending on input
 
 echo "== Done =="

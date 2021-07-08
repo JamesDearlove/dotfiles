@@ -21,10 +21,7 @@ export NVM_DIR="$HOME/.nvm"
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 
-# pyenv autocomplete
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-
 # terraform tab completion
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
-eval "$(pyenv init -)"
+
