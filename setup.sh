@@ -15,9 +15,13 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor --y
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
 $LSB_RELEASE stable" | sudo tee /etc/apt/sources.list.d/docker.list
 
-# azure cli
+# microsoft
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor --yes -o /usr/share/keyrings/microsoft.gpg
 
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/microsoft-ubuntu-$LSB_RELEASE-prod \
+$LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/microsoft.list
+
+# azure cli
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 
