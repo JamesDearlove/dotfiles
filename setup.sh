@@ -33,7 +33,8 @@ echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/hashicorp.gpg] https
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 
 # github
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -yesd -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+
 echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/github-cli.list 
 
