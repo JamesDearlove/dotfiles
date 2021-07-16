@@ -4,6 +4,7 @@ set -e
 
 LSB_RELEASE=$(lsb_release -cs)
 STARTING_FOLDER=$(pwd)
+ARCHITECTURE=$(dpkg --print-architecture)
 
 echo "=== Jimmy Dev Environment Setup ==="
 
@@ -12,24 +13,29 @@ echo "== APT Sources =="
 # docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
 $LSB_RELEASE stable" | sudo tee /etc/apt/sources.list.d/docker.list
 
 # microsoft
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor --yes -o /usr/share/keyrings/microsoft.gpg
 
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/microsoft-ubuntu-$LSB_RELEASE-prod \
+echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/microsoft-ubuntu-$LSB_RELEASE-prod \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/microsoft.list
 
 # azure cli
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ \
+echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 
 # terraform
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/hashicorp.gpg
 
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com \
+echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+# github
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -yesd -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages \
+$LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/github-cli.list 
 
 echo "== Dependencies =="
 
@@ -47,8 +53,8 @@ software-properties-common
 
 echo "== Installers =="
 
-# docker, azure cli, terraform, zsh, neofetch
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh neofetch
+# docker, azure cli, terraform, zsh, neofetch, github cli
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh neofetch gh
 
 # pyenv
 if [[ ! -d ~/.pyenv ]]
