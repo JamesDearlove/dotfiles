@@ -1,6 +1,8 @@
 # Script that copies spotlight images to OneDrive
 
 $backuplocation = "$env:OneDrive\Backgrounds\Windows Spotlight"
+Write-Host("Copying Spotlight Images")
+Write-Host("Location: $backuplocation")
 
 pushd $env:localappdata\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets
 
