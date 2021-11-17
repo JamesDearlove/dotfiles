@@ -1,5 +1,7 @@
 # Script that copies spotlight images to OneDrive
 
+Add-Type -AssemblyName System.Drawing
+
 $backuplocation = "$env:OneDrive\Backgrounds\Windows Spotlight"
 Write-Host("Copying Spotlight Images")
 Write-Host("Location: $backuplocation")
