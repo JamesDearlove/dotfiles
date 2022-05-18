@@ -30,18 +30,12 @@ $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/hashicorp.gpg
 
 echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com \
-$LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-
-# github
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/githubcli-archive-keyring.gpg
-
-echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages \
-$LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/github-cli.list 
+$LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/hashicorp.list 
 
 echo "== Dependencies =="
 
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 
 # python build, docker & azure cli, terraform
 
@@ -55,7 +49,7 @@ software-properties-common
 echo "== Installers =="
 
 # docker, azure cli, terraform, zsh, neofetch, github cli
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh neofetch gh
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh neofetch
 
 # pyenv
 if [[ ! -d ~/.pyenv ]]
