@@ -48,7 +48,7 @@ software-properties-common
 
 echo "== Installers =="
 
-# docker, azure cli, terraform, zsh, neofetch, github cli
+# docker, azure cli, terraform, zsh, neofetch
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh neofetch
 
 # pyenv
@@ -64,10 +64,10 @@ else
 fi
 
 # poetry
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3 -
+curl -sSL https://install.python-poetry.org | python3 -
 
 # nvm nodejs & npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install node
