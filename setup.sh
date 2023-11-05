@@ -6,7 +6,7 @@ LSB_RELEASE=$(lsb_release -cs)
 STARTING_FOLDER=$(pwd)
 ARCHITECTURE=$(dpkg --print-architecture)
 
-echo "=== Jimmy Dev Environment Setup ==="
+echo "=== Jimmy Linux dev setup ==="
 
 echo "== APT Sources =="
 
@@ -75,6 +75,9 @@ nvm install --lts
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 sudo chsh -s $(which zsh) $(whoami)
+
+# powerline10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 echo "== Copying Configs =="
 cp ./.zshrc ~
