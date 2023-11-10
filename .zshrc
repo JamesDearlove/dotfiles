@@ -9,6 +9,8 @@ fi
 # unsetopt BEEP
 # Turn off autocomplete beeps
 unsetopt LIST_BEEP
+# Stop sharing between active sessions
+unsetopt share_history
 
 # oh my zsh config
 
