@@ -37,9 +37,6 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 # local bin
 export PATH="/Users/james/bin:$PATH"
 
-# Postgres.app
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
 # OpenJDK 11
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
@@ -49,9 +46,17 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 # Ruby
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
-# Mac Specific
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-# source /Users/james/.docker/init-zsh.sh || true # Added by Docker Desktop
+# Mac Specifics
+if ! [[ "$OSTYPE" == "darwin"* ]]; then
+  # iTerm2 Integration
+  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+  
+  # Docker Desktop
+  source /Users/james/.docker/init-zsh.sh || true
+
+  # Postgres.app
+  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
