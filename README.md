@@ -10,7 +10,7 @@ I have setup scripts for various operating systems, usually to setup the environ
 
 This sets up a basic Windows install with Firefox, VSCode, and a couple of developer tools.
 
-Run a Windows PowerShell (built in v5.1, not v7) as admin, and run the `windows-setup.ps1` script.
+Run a Windows PowerShell as admin, and run the `windows-setup.ps1` script.
 
 ### Mac
 
