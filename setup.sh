@@ -32,6 +32,11 @@ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor --yes -o 
 echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/hashicorp.list 
 
+# github (not default)
+#curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/github-cli.gpg
+#echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/github-cli.gpg] https://cli.github.com/packages stable main" \
+#| sudo tee /etc/apt/sources.list.d/github-cli.list
+
 echo "== Dependencies =="
 
 sudo apt-get update
