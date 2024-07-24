@@ -32,17 +32,18 @@ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor --yes -o 
 echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/hashicorp.list 
 
-# github (not default)
-#curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/github-cli.gpg
-#echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/github-cli.gpg] https://cli.github.com/packages stable main" \
-#| sudo tee /etc/apt/sources.list.d/github-cli.list
+# github cli
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/github-cli.gpg
+
+echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/github-cli.gpg] https://cli.github.com/packages stable main" \
+| sudo tee /etc/apt/sources.list.d/github-cli.list
 
 echo "== Dependencies =="
 
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# python build, docker & azure cli, terraform
+# combined deps for: python build, docker, azure cli, terraform
 
 sudo apt-get install -y \
 make build-essential libssl-dev zlib1g-dev \
@@ -53,23 +54,25 @@ software-properties-common
 
 echo "== Installers =="
 
-# docker, azure cli, terraform, zsh, neofetch
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh neofetch
+# docker, azure cli, terraform, zsh, gh
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh gh
+
+# pipx, poetry
+sudo apt-get install -y pipx
+pipx ensurepath
+pipx install poetry
 
 # pyenv
-if [[ ! -d ~/.pyenv ]]
-then 
-    echo "Installing pyenv"
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-else
-    echo "Updating pyenv as its already installed"
-    cd ~/.pyenv
-    git pull
-    cd $STARTING_FOLDER
-fi
-
-# poetry
-curl -sSL https://install.python-poetry.org | python3 -
+#if [[ ! -d ~/.pyenv ]]
+#then 
+#    echo "Installing pyenv"
+#    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+#else
+#    echo "Updating pyenv as its already installed"
+#    cd ~/.pyenv
+#    git pull
+#    cd $STARTING_FOLDER
+#fi
 
 # nvm nodejs & npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
