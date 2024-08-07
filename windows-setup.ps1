@@ -25,6 +25,9 @@ foreach ( $app in $wingetpkgs )
     winget install --id=$app -e -h --silent --accept-package-agreements
 }
 
+# .NET 3.5
+DISM /Online /Enable-Feature /FeatureName:NetFx3 /All 
+
 # PowerShell profile
 # TODO: Either install OhMyPOSH or have a clean version without.
 # copy ./powershell_profile.ps1 $PROFILE
