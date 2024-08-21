@@ -22,7 +22,7 @@ curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmo
 echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/microsoft-ubuntu-$LSB_RELEASE-prod \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/microsoft.list
 
-# azure cli
+# azure cli (uses microsoft gpg)
 echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ \
 $LSB_RELEASE main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 
@@ -62,7 +62,7 @@ sudo apt-get install -y pipx
 pipx ensurepath
 pipx install poetry
 
-# pyenv
+# pyenv (not using currently)
 #if [[ ! -d ~/.pyenv ]]
 #then 
 #    echo "Installing pyenv"
@@ -90,7 +90,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 echo "== Copying Configs =="
 cp ./.zshrc ~
 cp ./.zprofile ~
-cp -r ./.config ~
-# todo: would be nice to configure neofetch ascii art depending on input
+# cp -r ./.config ~
 
 echo "== Done =="
