@@ -8,9 +8,21 @@ return {
     },
     config = function()
             require("neo-tree").setup({
+                filesystem = {
+                    filtered_items = {
+                        visible = true,
+                        hide_dotfiles = false,
+                        hide_gitignored = false,
+                    },
+                },
                 source_selector = {
                     winbar = true,
-                    statusline = false
+                    statusline = false,
+                    sources = { 
+                        { source = "filesystem" }, 
+                        { source = "git_status" }, 
+                        { source = "document_symbols" },
+                    },
                 }
             })
     end,
