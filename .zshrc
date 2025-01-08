@@ -25,23 +25,20 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Local bin
+export PATH="${HOME}/.local/bin"
+
+# Linux Specifics
+if [[ "$OSTYPE" == "linux"* ]]; then
+  # Neovim install location
+  export PATH="/opt/nvim-linux64/bin:$PATH"
+fi
+
+
 # Mac Specifics
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # pyenv
-  # eval "$(pyenv init -)"
-
-  # poetry
-  export PATH="/Users/james/Library/Python/3.9/bin:$PATH"
-  export PATH="/usr/local/opt/libpq/bin:$PATH"
-
-  # local bin
-  export PATH="/Users/james/bin:$PATH"
-
-  # OpenJDK 11
-  export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
-
-  # OpenJDK Latest
-  # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  # OpenJDK 21
+  export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
   # Ruby
   export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
@@ -49,11 +46,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # iTerm2 Integration
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
   
-  # Docker Desktop
-  source /Users/james/.docker/init-zsh.sh || true
-
-  # Postgres.app
-  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+  # Tailscale
+  export PATH="/Applications/Tailscale.app/Contents/MacOS:$PATH"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

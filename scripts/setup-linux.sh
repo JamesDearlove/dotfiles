@@ -38,6 +38,7 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 echo "deb [arch=$ARCHITECTURE signed-by=/usr/share/keyrings/github-cli.gpg] https://cli.github.com/packages stable main" \
 | sudo tee /etc/apt/sources.list.d/github-cli.list
 
+
 echo "== Dependencies =="
 
 sudo apt-get update
@@ -46,33 +47,21 @@ sudo apt-get upgrade -y
 # combined deps for: python build, docker, azure cli, terraform
 
 sudo apt-get install -y \
-make build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-apt-transport-https ca-certificates gnupg lsb-release \
-software-properties-common
-
+    make build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
+    apt-transport-https ca-certificates gnupg lsb-release \
+    software-properties-common unzip
+ 
 echo "== Installers =="
 
 # docker, azure cli, terraform, zsh, gh
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io azure-cli terraform zsh gh
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin \
+    docker-compose-plugin azure-cli terraform zsh gh
 
 # pipx, poetry
 sudo apt-get install -y pipx
-pipx ensurepath
 pipx install poetry
-
-# pyenv (not using currently)
-#if [[ ! -d ~/.pyenv ]]
-#then 
-#    echo "Installing pyenv"
-#    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-#else
-#    echo "Updating pyenv as its already installed"
-#    cd ~/.pyenv
-#    git pull
-#    cd $STARTING_FOLDER
-#fi
 
 # nvm nodejs & npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -80,10 +69,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install --lts
 
-# Homebrew and Terragrunt
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
-brew install terragrunt
+# neovim 
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+rm nvim-linux64.tar.gz
 
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -95,6 +85,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 echo "== Copying Configs =="
 cp ./.zshrc ~
 cp ./.zprofile ~
-# cp -r ./.config ~
+cp ./.p10k.zsh ~
+cp -r ./.config ~
 
 echo "== Done =="
