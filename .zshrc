@@ -26,7 +26,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Local bin
-export PATH="${HOME}/.local/bin"
+export PATH="${HOME}/.local/bin:$PATH"
 
 # Linux Specifics
 if [[ "$OSTYPE" == "linux"* ]]; then
@@ -39,9 +39,6 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # OpenJDK 21
   export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
-
-  # Ruby
-  export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
   # iTerm2 Integration
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
