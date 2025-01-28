@@ -51,7 +51,7 @@ sudo apt-get install -y \
     libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
     libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
     apt-transport-https ca-certificates gnupg lsb-release \
-    software-properties-common unzip
+    software-properties-common unzip glib-networking
  
 echo "== Installers =="
 
