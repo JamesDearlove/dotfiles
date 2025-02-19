@@ -31,7 +31,7 @@ export PATH="${HOME}/.local/bin:$PATH"
 # Linux Specifics
 if [[ "$OSTYPE" == "linux"* ]]; then
   # Neovim install location
-  export PATH="/opt/nvim-linux64/bin:$PATH"
+  export PATH="/opt/nvim-linux_x86_64/bin:$PATH"
 fi
 
 
