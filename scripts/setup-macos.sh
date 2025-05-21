@@ -19,7 +19,7 @@ fi
 
 brew install --cask eloston-chromium firefox iterm2 raycast rectangle visual-studio-code xcodes
 
-brew install mtr neovim nvm pipx 
+brew install mtr neovim nvm pipx fzf 
 
 # Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
