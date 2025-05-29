@@ -1,0 +1,42 @@
+{
+	"Alert Note": {
+		"prefix": "note",
+		"body": [
+			"> [!NOTE]",
+			"> $0"
+		],
+		"description": "GitHub Markdown alert note"
+	},
+	"Alert Tip": {
+		"prefix": "tip",
+		"body": [
+			"> [!TIP]",
+			"> $0"
+		],
+		"description": "GitHub Markdown alert tip"
+	},
+	"Alert Important": {
+		"prefix": "important",
+		"body": [
+			"> [!IMPORTANT]",
+			"> $0"
+		],
+		"description": "GitHub Markdown alert important"
+	},
+	"Alert Warning": {
+		"prefix": "warning",
+		"body": [
+			"> [!WARNING]",
+			"> $0"
+		],
+		"description": "GitHub Markdown alert warning"
+	},
+	"Alert Caution": {
+		"prefix": "warning",
+		"body": [
+			"> [!CAUTION]",
+			"> $0"
+		],
+		"description": "GitHub Markdown alert caution"
+	}
+}
