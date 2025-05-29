@@ -36,13 +36,6 @@ export NVM_DIR="$HOME/.nvm"
 # Local bin
 export PATH="${HOME}/.local/bin:$PATH"
 
-# Linux Specifics
-if [[ "$OSTYPE" == "linux"* ]]; then
-  # Neovim install location
-  export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
-fi
-
-
 # Mac Specifics
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # OpenJDK 21

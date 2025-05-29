@@ -27,9 +27,19 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # Defaults pls
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-echo "== Copying Configs =="
-cp ./.zshrc ~
-cp ./.zprofile ~
-cp ./.p10k.zsh ~
-cp -r ./.config ~
+# Moving towards using symlinks now. Keep the old ones just in case.
+if [[ -f $HOME/.zshrc ]]; then
+    echo "== Backing up old configs =="
+    mv $HOME/.zshrc $HOME/.zshrc.old
+    mv $HOME/.zprofile $HOME/.zprofile.old
+    mv $HOME/.p10k.zsh $HOME/.p10k.zsh.old
+    mv $HOME/.config/nvim $HOME/.config/nvm.old
+fi
 
+if [[ ! -s $HOME/.zshrc ]]; then
+    echo "== Symlink Configs =="
+    ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+    ln -s $HOME/dotfiles/.zprofile $HOME/.zprofile
+    ln -s $HOME/dotfiles/.p10k.zsh $HOME/.p10k.zsh 
+    ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
+fi

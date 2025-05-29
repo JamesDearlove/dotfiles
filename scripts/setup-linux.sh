@@ -3,8 +3,8 @@
 set -e
 
 LSB_RELEASE=$(lsb_release -cs)
-STARTING_FOLDER=$(pwd)
 ARCHITECTURE=$(dpkg --print-architecture)
+SCRIPT_FOLDER=$(dirname -- "$0")
 
 echo "=== Jimmy Linux dev setup ==="
 
@@ -64,28 +64,52 @@ sudo apt-get install -y pipx
 pipx install poetry
 
 # nvm nodejs & npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install --lts
 
 # neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-sudo rm -rf /opt/nvim
+if [[ -d /opt/nvim-linux-x86_64 ]]; then
+    sudo rm -rf /opt/nvim-linux-x86_64
+fi
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 rm nvim-linux-x86_64.tar.gz
 
-# oh my zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-sudo chsh -s $(which zsh) $(whoami)
+# fzf - Ubuntu APT versions of this are always way out of date
+curl -LO https://github.com/junegunn/fzf/releases/download/v0.62.0/fzf-0.62.0-linux_amd64.tar.gz
+if [[ -d /opt/fzf/ ]]; then
+    sudo rm -rf /opt/fzf/
+fi
+sudo mkdir /opt/fzf/
+sudo tar -C /opt/fzf/ -xzf fzf-0.62.0-linux_amd64.tar.gz
+rm fzf-0.62.0-linux_amd64.tar.gz
 
-# powerline10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+# oh my zsh - Dont reinstall if it's here.
+if [[ ! -d $HOME/.oh-my-zsh ]]; then
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    sudo chsh -s $(which zsh) $(whoami)
+    
+    # powerline10k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+fi
 
-echo "== Copying Configs =="
-cp ./.zshrc ~
-cp ./.zprofile ~
-cp ./.p10k.zsh ~
-cp -r ./.config ~
+# Moving towards using symlinks now. Keep the old ones just in case.
+if [[ ! -s $HOME/.zshrc ]]; then
+    if [[ -f $HOME/.zshrc ]]; then
+        echo "== Backing up old configs =="
+        mv $HOME/.zshrc $HOME/.zshrc.old
+        mv $HOME/.zprofile $HOME/.zprofile.old
+        mv $HOME/.p10k.zsh $HOME/.p10k.zsh.old
+        mv $HOME/.config/nvim $HOME/.config/nvm.old
+    fi
+
+    echo "== Symlink Configs =="
+    ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+    ln -s $HOME/dotfiles/.zprofile $HOME/.zprofile
+    ln -s $HOME/dotfiles/.p10k.zsh $HOME/.p10k.zsh 
+    ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
+fi
 
 echo "== Done =="

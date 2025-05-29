@@ -13,3 +13,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="$PATH:/Users/james/.dotnet/tools"
 fi
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    export PATH="/opt/nvim-linux-x86_64/bin:/opt/fzf:$PATH"
+fi
