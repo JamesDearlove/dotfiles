@@ -24,8 +24,14 @@ brew install mtr neovim nvm pipx fzf
 # Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-# Defaults pls
+# System Tweaks (most need a reboot)
 defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write -g InitialKeyRepeat -float 10.0
+defaults write -g KeyRepeat -float 1.0
+defaults write com.apple.Dock showAppExposeGestureEnabled -bool true
+
+# And kill the Dock (for those that don't need a reboot)
+killall Dock
 
 # Moving towards using symlinks now. Keep the old ones just in case.
 if [[ -f $HOME/.zshrc ]]; then
