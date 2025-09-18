@@ -26,7 +26,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 # System Tweaks (most need a reboot)
 defaults write -g ApplePressAndHoldEnabled -bool false
-defaults write -g InitialKeyRepeat -float 10.0
+defaults write -g InitialKeyRepeat -float 15.0
 defaults write -g KeyRepeat -float 1.0
 defaults write com.apple.Dock showAppExposeGestureEnabled -bool true
 
