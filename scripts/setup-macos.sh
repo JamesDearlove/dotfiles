@@ -17,8 +17,13 @@ if [[ $? != 0 ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew install --cask eloston-chromium firefox iterm2 raycast rectangle visual-studio-code xcodes
+# Mandatory apps
+brew install --cask eloston-chromium firefox iterm2 visual-studio-code xcodes
 
+# Less needed
+brew install --cask jordanbaird-ice rectangle alt-tab raycast
+
+# And then command line things
 brew install mtr neovim nvm pipx fzf 
 
 # Powerlevel10k
