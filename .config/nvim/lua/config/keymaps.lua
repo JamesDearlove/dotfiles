@@ -4,12 +4,14 @@ local opts = { noremap = true, silent = true }
 -- General maps
 map('n', '<leader>q', '<Cmd>qa<CR>', opts)
 map('n', '<leader>Q', '<Cmd>qa!<CR>', opts)
-map('n', '<leader>w', '<Cmd>w<CR>', opts)
+map('n', '<leader>w', '<Cmd>bd<CR>', opts)
+map('n', '<leader>s', '<Cmd>w<CR>', opts)
 
--- Neotree toggle
-map('n', '<leader>e', '<Cmd>Neotree toggle reveal<CR>', opts)
+-- Neotree
+map('n', '<leader>e', '<Cmd>Neotree focus<CR>', opts)
+map('n', '<leader>E', '<Cmd>Neotree toggle reveal<CR>', opts)
 
--- Mac iterm note: make sure you remap the option key.
+-- Mac iterm note: make sure you remap the option key to Esc+
 -- move to buffer
 map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
