@@ -1,6 +1,9 @@
 
 vim.cmd.colorscheme("tokyonight")
 
+-- Titlebar
+vim.opt.title = true
+
 -- UI Config
 vim.opt.number = true
 --vim.opt.relativenumber = true
