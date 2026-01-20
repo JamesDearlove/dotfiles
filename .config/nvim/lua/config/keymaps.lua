@@ -28,5 +28,6 @@ map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
 map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
 map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 
--- close buffer
-map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+-- stolen
+map("n", "J", "mzJ`z", { desc = "Join lines and keep cursor in the middle", silent = true })
+

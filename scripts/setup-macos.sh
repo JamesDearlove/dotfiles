@@ -24,7 +24,7 @@ brew install --cask eloston-chromium firefox iterm2 visual-studio-code xcodes
 brew install --cask jordanbaird-ice rectangle alt-tab raycast
 
 # And then command line things
-brew install mtr neovim nvm pipx fzf 
+brew install mtr neovim nvm pipx fzf ripgrep 
 
 # Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
