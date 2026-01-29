@@ -1,10 +1,32 @@
 return {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    'nvim-telescope/telescope.nvim', tag = 'v0.2.1',
     dependencies = { 'nvim-lua/plenary.nvim' },
 
     config = function()
+        local telescope = require('telescope')
+        local telescopeConfig = require('telescope.config')
         local builtin = require('telescope.builtin')
 
+        local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+
+        -- allow searching in hidden files.
+        table.insert(vimgrep_arguments, "--hidden")
+        table.insert(vimgrep_arguments, "--glob")
+        table.insert(vimgrep_arguments, "!**/.git/*")
+
+        require('telescope').setup({
+            defaults = {
+	        	-- `hidden = true` is not supported in text grep commands.
+		        vimgrep_arguments = vimgrep_arguments,
+	        },
+            pickers = {
+                find_files = {
+                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" }
+                }
+            }
+        })
+
+        -- add all the keymaps
         vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
         vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
         vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
