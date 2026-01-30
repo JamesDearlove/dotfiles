@@ -5,6 +5,7 @@ local opts = { noremap = true, silent = true }
 map('n', '<leader>q', '<Cmd>qa<CR>', opts)
 map('n', '<leader>Q', '<Cmd>qa!<CR>', opts)
 map('n', '<leader>w', '<Cmd>bd<CR>', opts)
+map('n', '<leader>W', '<Cmd>bd!<CR>', opts)
 map('n', '<leader>s', '<Cmd>w<CR>', opts)
 
 -- Neotree
