@@ -10,7 +10,6 @@
       <taskbar:TaskbarPinList>
         <taskbar:DesktopApp DesktopApplicationID="308046B0AF4A39CB" />
         <taskbar:DesktopApp DesktopApplicationID="Microsoft.Windows.Explorer" />
-        <taskbar:DesktopApp DesktopApplicationID="Microsoft.VisualStudioCode" />
         <taskbar:DesktopApp DesktopApplicationID="Microsoft.WindowsTerminal_8wekyb3d8bbwe!App" />
       </taskbar:TaskbarPinList>
     </defaultlayout:TaskbarLayout>

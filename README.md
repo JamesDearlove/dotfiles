@@ -18,6 +18,18 @@ This sets up a basic Windows install with Firefox, VSCode, and a couple of devel
 
 Run a Windows PowerShell as admin, and run the `setup-windows.ps1` script.
 
+#### Extra Info
+
+I haven't scripted these parts, I only use them sometimes.
+
+- WinGet is not included on LTSC, I prefer the Store method to keep it up to date. You can install the Store and App Installer by:
+  1. Reinstall the store using `wsreset -i`
+  2. Install App Installer with this URI: `ms-windows-store://pdp?&productid=9nblggh4nns1`
+  3. Proceed with the usual script, which will install Terminal.
+- BgInfo isn't part of the base script, you can install it via WinGet: `winget install Microsoft.Sysinternals.BGInfo`
+- Copy the `windows` folder to `C:\Baseline` to get baseline configs.
+- Create a new shortcut in the Startup folder that directs to: `Bginfo C:\Baseline\config.bgi /timer:0`
+
 ### Mac
 
 Heavily WIP, and therefore not recommended, at `setup-macos.sh`.
@@ -28,4 +40,6 @@ There are likely many other configs in here, some that I recall from when last u
 - Neovim configs are at `.config/nvim`
 - Zsh configs are within `.zshrc` and potentially `.p10k.zsh` for Powerline10k.
 - Windows based configs for duplicating dev environments in `windows/`
+
+
 
